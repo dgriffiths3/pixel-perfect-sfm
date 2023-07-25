@@ -120,7 +120,7 @@ class S2DNet(BaseModel):
 
     def _forward(self, image: torch.Tensor) -> List[torch.Tensor]:
         mean, std = image.new_tensor(self.mean), image.new_tensor(self.std)
-        images = images[:, :3]
+        image = image[:, :3]
         image = (image - mean[:, None, None]) / std[:, None, None]
 
         feature_map = image
